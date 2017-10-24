@@ -14,11 +14,13 @@
   <strong>Longitude:</strong>
   <%= @location.longitude %>
 </p>
+<%= image_tag "https://maps.googleapis.com/maps/api/staticmap?size=600x400&sensor=false&zoom=16&markers=#{@location.latitude}%2C#{@location.longitude}"%>
+<h2>Nearby Locations</h2>
 <ul>
 	<% if @location.nearbys.present?%>
 		<% for location in @location.nearbys(30)%>
 			<li>
-				<%= link_to location.address, location %>(<%= location.distance.round(2)%> miles)
+				<h2><%= link_to location.address, location %>(<%= location.distance.round(2)%> miles)</h2>
 			</li>
 		<%end %>
 	<%end%>
